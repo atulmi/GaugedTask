@@ -1,13 +1,16 @@
 import "./App.css";
 import React from "react";
+
+// Import Bootstrap components needed to partition webpage into rows and columns, and Table
 import "bootstrap/dist/css/bootstrap.css";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Table from "react-bootstrap/Table";
+
+// Import necessary ChartJS dependencies for displaying bar and doughnut charts
 import { Bar } from "react-chartjs-2";
 import { Doughnut } from 'react-chartjs-2';
-
 
 import {
   Chart as ChartJS,
@@ -21,7 +24,7 @@ import {
 } from 'chart.js';
 
 
-
+// Register the above ChartJS dependencies so they can be used by the Bar and Doughnut chart components
 ChartJS.register(
   ArcElement,
   CategoryScale,
@@ -32,6 +35,7 @@ ChartJS.register(
   Legend
 );
 
+// Data to map into React-Bootstrap table
 const incomePerMonthTable = [
   {quarter: "Q1", revenue: 2000, expenses: 3000, profit: -1000},
   {quarter: "Q2", revenue: 500, expenses: 200, profit: 300},
@@ -40,6 +44,7 @@ const incomePerMonthTable = [
  
 ];
 
+// Data to display in bar chart -- taken from the "incomePerMonthTable" array, so values are consistent with table
 const barChartData = {
   labels: ["Q1", "Q2", "Q3", "Q4"],
   datasets: [
@@ -63,6 +68,7 @@ const barChartData = {
   ],
 };
 
+// Data to display in doughnut chart -- taken from the "incomePerMonthTable" array, so values are consistent with table
 const doughnutChartData = {
   labels: ["Q1 Profit", "Q2 Profit", "Q3 Profit", "Q4 Profit"],
   datasets: [
@@ -74,6 +80,7 @@ const doughnutChartData = {
   ],
 };
 
+// Main function that includes the bar and doughnut charts, plus the table
 function App() {
   return (
     <div>
